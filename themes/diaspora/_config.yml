@@ -26,7 +26,7 @@ scrollbar: true
 # Gitalk 评论插件（https://github.com/gitalk/gitalk）
 gitalk:
     # 是否自动展开评论框
-    autoExpand: false
+    autoExpand: true
     # 应用编号
     clientID: '322c43929b0a911a80d0'
     # 应用秘钥
