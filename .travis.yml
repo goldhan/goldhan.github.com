@@ -6,8 +6,8 @@ before_install:
   - git clone https://github.com/goldhan/goldhan.github.io.git -b Dev
 install:
   # - cd goldhan.github.io
-  - yarn install
-  - yarn install hexo-cli -g
+  - npm install
+  - npm install hexo-cli -g
 script:
   - hexo clean
   - hexo g -d
