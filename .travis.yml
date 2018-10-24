@@ -12,12 +12,12 @@ script:
   - hexo clean
   - hexo g -d
 
-# after_success:
-#   - git config --global user.name "Gallen.Hu"
-#   - git config --global user.email "gallenhu@foxmail.com"
-#   - cd ./public
-#   - git init
-#   - git add -A
-#   - git commit -m "Travis CI Auto Builder"
-#   - git checkout -b gh-pages
-#   - git push --force -u https://${REPO_TOKEN}@github.com/Hinpc/hexo-blog-generator.git gh-pages
+after_success:
+  - git config --global user.name "Goldhan"
+  - git config --global user.email "hjhj117@hotmail.com"
+  - cd ./public
+  - git init
+  - git add -A
+  - git commit -m "Travis CI Auto Builder"
+  - git checkout -b gh-pages
+  - git push --force -u https://${Token}@github.com/goldhan/goldhan.github.io.git
