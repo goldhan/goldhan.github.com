@@ -10,10 +10,11 @@ script:
   - hexo clean
   - hexo g
 after_success:
+  - cp README.md public
   - cd ./public
   - git init
   - git config --global user.name "Goldhan"
   - git config --global user.email "hjhj117@hotmail.com"
   - git add -A
   - git commit -m "Travis CI Auto Builder"
-  - git push --force -u https://${Token}@github.com/goldhan/goldhan.github.io.git
+  - git push --force -u https://${Token}@github.com/goldhan/goldhan.github.io.git master:master
