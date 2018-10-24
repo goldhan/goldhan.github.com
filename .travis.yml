@@ -2,22 +2,18 @@ language: node_js
 node_js: stable
 
 before_install:
-  # - git clone https://github.com/GallenHu/hexo-theme-Daily.git themes/Daily
   - git clone https://github.com/goldhan/goldhan.github.io.git -b Dev
 install:
-  # - cd goldhan.github.io
   - npm install
   - npm install hexo-cli -g
 script:
   - hexo clean
   - hexo g
-
 after_success:
-  - git config --global user.name "Goldhan"
-  - git config --global user.email "hjhj117@hotmail.com"
   - cd ./public
   - git init
+  - git config --global user.name "Goldhan"
+  - git config --global user.email "hjhj117@hotmail.com"
   - git add -A
   - git commit -m "Travis CI Auto Builder"
-  - git checkout -b gh-pages
   - git push --force -u https://${Token}@github.com/goldhan/goldhan.github.io.git
