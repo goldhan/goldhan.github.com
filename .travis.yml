@@ -10,7 +10,7 @@ install:
   - npm install hexo-cli -g
 script:
   - hexo clean
-  - hexo g -d
+  - hexo g
 
 after_success:
   - git config --global user.name "Goldhan"
