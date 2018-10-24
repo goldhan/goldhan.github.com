@@ -5,7 +5,7 @@ before_install:
   # - git clone https://github.com/GallenHu/hexo-theme-Daily.git themes/Daily
   - git clone https://github.com/goldhan/goldhan.github.io.git -b Dev
 install:
-  - cd goldhan.github.io
+  # - cd goldhan.github.io
   - yarn install
   - yarn install hexo-cli -g
 script:
