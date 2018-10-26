@@ -43,7 +43,7 @@ gitalk:
     distractionFreeMode: false
 
 # 网站关键字
-keywords: iOS, Gold
+keywords: ['iOS','Gold']
 
 # 要使用google_analytics进行统计的话，这里需要配置ID
 google_analytics: 

@@ -1,7 +1,11 @@
 ---
 title: GDWeatherStation_2.前期准备
 date: 2018-10-25 13:31:14
-tags: ESP8266 12864 Arduino Weather
+tags: 
+    - ESP8266 
+    - 12864
+    - Arduino
+    - Weather
 ---
 
 # ESP8266 OLED WeatherStationServer
