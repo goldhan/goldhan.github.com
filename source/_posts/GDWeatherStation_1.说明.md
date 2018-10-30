@@ -6,6 +6,7 @@ tags:
     - 12864
     - Arduino
     - Weather
+# cover: http://domain.com/awesome.jpg
 ---
 
 # ESP8266 OLED WeatherStationServer

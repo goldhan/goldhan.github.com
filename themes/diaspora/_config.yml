@@ -11,8 +11,7 @@ autoplay: false
 
 # 默认音乐
 mp3: 
-  - http://link.hhtjim.com/163/5146554.mp3
-  - http://link.hhtjim.com/qq/001faIUs4M2zna.mp3
+  - https://github.com/goldhan/GDResource/raw/master/Music/%E5%AD%9D%E6%B7%91%20-%20%E6%BE%A4%E9%87%8E%E5%BC%98%E4%B9%8B%20-%20Call%C2%A0of%C2%A0Silence%C2%A0(%E5%AD%9D%E6%B7%91%C2%A0Bootleg).mp3
 
 # 首页封面图, 为空时取文章的cover作为封面
 welcome_cover: # /img/welcome-cover.jpg
