@@ -1,14 +1,15 @@
 ---
-title: GDWeatherStation_2.前期准备
+title: GDWeatherStation_2 前期准备
 date: 2018-10-25 13:31:14
 tags: 
     - ESP8266 
     - 12864
     - Arduino
     - Weather
+cover: /img/GDWeatherStation/UI_0.png
 ---
 
-# ESP8266 OLED WeatherStationServer
+# GDWeatherStation_2 前期准备
 
 ## 硬件准备
 

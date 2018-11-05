@@ -1,37 +1,37 @@
 ---
-title: GDWeatherStation_1.说明
+title: GDWeatherStation_1 说明
 date: 2018-10-24 13:15:14
 tags: 
     - ESP8266 
     - 12864
     - Arduino
     - Weather
-# cover: http://domain.com/awesome.jpg
+cover: /img/GDWeatherStation/UI_0.png
 ---
 
-# ESP8266 OLED WeatherStationServer
+# GDWeatherStation_1 说明
 
 ## 目录
 
-- GDWeatherStation_1.说明
+- GDWeatherStation_1 说明
     > 简介以及说明
 
-- GDWeatherStation_2.前期准备
+- GDWeatherStation_2 前期准备
     > 你需要准备什么？
 
-- GDWeatherStation_3.接口说明
+- GDWeatherStation_3 接口说明
     > 你需要准备的接口说明，以及申请工作
 
-- GDWeatherStation_4.Python端
+- GDWeatherStation_4 Python端
     > Python端服务脚本说明
 
-- GDWeatherStation_5.Arduino端
+- GDWeatherStation_5 Arduino端
     > Arduino端说明
 
-- GDWeatherStation_6.UI说明
+- GDWeatherStation_6 UI说明
     > 关于UI设计
 
-- GDWeatherStation_7.后续
+- GDWeatherStation_7 后续
     > 进一步改进
 
 ## 最终效果说明
