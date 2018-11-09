@@ -11,6 +11,7 @@ script:
   - hexo g
 after_success:
   - cp README.md public
+  - cp README.md source/_posts/
   - cd ./public
   - git init
   - git config --global user.name "Goldhan"
