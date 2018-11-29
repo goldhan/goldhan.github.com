@@ -96,7 +96,7 @@ after_success:
   - git push --force -u https://${Token}@xxx.git master:master
 ```
 
-    - 关于设置 Token
+  - 关于设置 Token
 
     1. 打开 [travis-ci](https://travis-ci.com/) 找到你对应关联项目的设置界面，类似这个地址的页面：https://travis-ci.com/goldhan/goldhan.github.io/settings
 
@@ -121,4 +121,4 @@ after_success:
 
 1. git仓库是带有 GitHub Pages 服务的，具体请搜索
 2. travis-ci 基础使用，请看官网的文档
-3. 案例：[github](https://github.com/goldhan/goldhan.github.io)
+3. 案例：[goldhan.github.io](https://github.com/goldhan/goldhan.github.io)
