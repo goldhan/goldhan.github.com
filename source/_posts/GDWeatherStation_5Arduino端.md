@@ -36,22 +36,43 @@ tags:
 
 void setup()
 {
-    char ssid[] = "xxxxxx"; // wifi ssid
-    char password[] = "xxxxxxxx"; // wifi password
-    char apiKey[] = "c85bd9d844646649b69a6476d53cae6f"; // yeelink apiKey
-    char url[] = "http://api.yeelink.net/v1.0/device/355774/sensor/402747/datapoints"; // yeelink url
+    char ssid[] = "xxx"; // wifi ssid
+    char password[] = "xxx"; // wifi password
+    char url[] = "https://raw.githubusercontent.com/goldhan/MockJSON/master/GDWeather.json"; // git url
+    // SHA1 fingerprint of the certificate  
+    //把你需要调用的请求地址用浏览器访问，然后打开调试工具选择“安全”即可看到对应请求的fingerprint，复制到这个地方即可
+    char fingerprint[] = "CC AA 48 48 66 46 0E 91 53 2C 9C 7C 23 2A B1 74 4D 29 9D 33"; 
     Serial.begin(115200);
     u8g2Begin();
-    GDWifiBegin(ssid, password, apiKey, url);
+    GDWifiBegin(ssid, password, fingerprint, url);
 
     // theFirst();
 }
 void loop()
 {
-    char apiKey[] = "c85bd9d844646649b69a6476d53cae6f"; // yeelink apiKey 和上边值相同
-    char url[] = "http://api.yeelink.net/v1.0/device/355774/sensor/402747/datapoints"; // yeelink url 和上边值相同
-    GDStart(apiKey, url);
+    // SHA1 fingerprint of the certificate  
+    //把你需要调用的请求地址用浏览器访问，然后打开调试工具选择“安全”即可看到对应请求的fingerprint，复制到这个地方即可
+    char fingerprint[] = "CC AA 48 48 66 46 0E 91 53 2C 9C 7C 23 2A B1 74 4D 29 9D 33";
+    char url[] = "https://raw.githubusercontent.com/goldhan/MockJSON/master/GDWeather.json"; // git url
+    GDStart(fingerprint, url);
 }
+
 ```
 
 > __请按照注释去填写对应的值__
+
+### 注意
+
+- 接线
+
+`U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, /* clock=*/D6, /* data=*/D5, /* reset=*/U8X8_PIN_NONE);`
+代码已经很明确了，请对应接线即可，也可以按照自己的喜好去换引脚端口，OLED屏幕支持 i2c, SPI,本代码用的是 i2c协议，可以按照自己的需求去更改下代码即可，具体不懂可以百度，关键字：U8G2 spi，
+类似：`U8G2_SSD1306_128X64_NONAME_1_4W_SW_SPI u8g2(U8G2_R0,/* clock=*/4, /* data=*/ 5, /* cs=*/ 3, /* dc=*/ 6, /* reset=*/ 7); `
+
+- url 地址
+
+url 地址是git里面可以直接访问json的地址，一般都是以 `https://raw` 为开头的地址
+
+- fingerprint
+
+由于是https请求，所以请用浏览器访问上边的地址，打开调试工具选择“安全”即可看到对应请求的fingerprint，__SHA1__
