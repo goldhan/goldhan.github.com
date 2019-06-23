@@ -7,9 +7,10 @@ tags:
 cover: /img/JustFlipTime/JustFlipTime.png
 ---
 
-# 简单纯粹的翻页时钟，充分利用你的旧手机
+# 简单纯粹的翻页时钟，充分利用你的旧手机和旧 iPad
 
 ![01](/img/JustFlipTime/JustFlipTime.png)
+![02](/img/JustFlipTime/JustFlipTime_IPad.png)
 
 ## 简单
 
