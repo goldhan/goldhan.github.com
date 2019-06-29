@@ -15,6 +15,8 @@ cover: /img/JustFlipTime/JustFlipTime_stop.png
 
 ## 原因
 
+> 第一次
+
 ```OC
 Guideline 2.3.7 - Performance - Accurate Metadata
 
@@ -74,6 +76,8 @@ Please see attached screenshots for details.
 3. APP 内部出现类似其他 APP Store 的界面，其实是我嵌入的第三方广告，APP WALL，当时在嵌入时，我还特地的去其官网看，有没有什么注意事项，结果什么也没说，于是觉得嵌入应该没问题，结果还是被拒，之前就知道，iOS 应用内部不能实现类似 APP Store 的功能。本以为 SDK 提供商没说，还以为放宽了呢。
 
 > 代码屏蔽对应的模块，重新打包上传，注意打包时的版本号
+
+4. 如果 APP 有内购的话，最好提供内购地方的截图，表明出来，如果不说清楚的话，APPLE 可能会给你发邮件问你怎进行操作关于内购。
 
 ## 最后
 
