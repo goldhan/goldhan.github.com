@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GoldKing_Blog</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="iOS,Gold,"> 
+    <meta name="description" content="GoldKing&#39;s Blog,简单纯粹的翻页时钟，充分利用你的旧手机和旧 iPad
+最新V1.1删除广告，放开所有内容限制
+简单只是为了充分利用旧手机，简单的显示时间
+富有设计感简约，优美的设计，给你不一样的体验，内置多个主题可,"> 
+    <meta name="author" content="GoldKing"> 
+    <link rel="alternative" href="atom.xml" title="GoldKing_Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">使用travis-ci帮你自动编译发布 Hexo 博客</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">使用travis-ci帮你自动编译发布 Hexo 博客</h1>
+        <div class="stuff">
+            <span>十一月 09, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/README/">README</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="goldhan-github-io"><a href="#goldhan-github-io" class="headerlink" title="goldhan.github.io"></a>goldhan.github.io</h1><blockquote>
+<p>本教程只是提供大概的思路，有可能到最后不会成功，请见谅</p>
+</blockquote>
+<h2 id="你需要知道"><a href="#你需要知道" class="headerlink" title="你需要知道"></a>你需要知道</h2><ul>
+<li>git 使用</li>
+<li>基础的终端使用</li>
+<li>如果使用 GitHub Pages 服务</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/goldhan/GDResource/master/Logo/GoldKingLogo.png" alt="Logo"></p>
+<p><a href="https://travis-ci.com/goldhan/goldhan.github.io" target="_blank" rel="noopener"><img src="https://travis-ci.com/goldhan/goldhan.github.io.svg?branch=Dev" alt="Build Status"></a></p>
+<h2 id="分支说明"><a href="#分支说明" class="headerlink" title="分支说明"></a>分支说明</h2><ul>
+<li>master 为编译后的文件</li>
+<li>Dev 为 Hexo 源文件</li>
+</ul>
+<blockquote>
+<p>每次更改 Dev 分支将会自动触发travis-ci编译，自动更新 master 分支</p>
+</blockquote>
+<h2 id="如何实现？"><a href="#如何实现？" class="headerlink" title="如何实现？"></a>如何实现？</h2><h3 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h3><ol>
+<li>git</li>
+<li>node.js  npm</li>
+</ol>
+<blockquote>
+<p>以上环境安装都比较简单这里不做描述</p>
+</blockquote>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="github创建一个新的项目（其他git平台也可）GitHub-Pages"><a href="#github创建一个新的项目（其他git平台也可）GitHub-Pages" class="headerlink" title="github创建一个新的项目（其他git平台也可）GitHub Pages"></a>github创建一个新的项目（其他git平台也可）<strong>GitHub Pages</strong></h4><pre><code>&gt; 具体流程很简单，这里不做说明
+</code></pre><h4 id="github申请-token"><a href="#github申请-token" class="headerlink" title="github申请 token"></a>github申请 token</h4><ol>
+<li><img src="/img/GitHubToken/token_01.png" alt="01"></li>
+<li><img src="/img/GitHubToken/token_02.png" alt="02"></li>
+<li><img src="/img/GitHubToken/token_03.png" alt="03"></li>
+<li><img src="/img/GitHubToken/token_04.png" alt="04"></li>
+<li><img src="/img/GitHubToken/token_05.png" alt="05"><blockquote>
+<p>记住返回的 token 字符串，最好保存起来<br>其他git服务商也有对应的token申请，这里不做描述</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="准备好Hexo相关文件"><a href="#准备好Hexo相关文件" class="headerlink" title="准备好Hexo相关文件"></a>准备好Hexo相关文件</h4><blockquote>
+<p><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo 文档</a></p>
+</blockquote>
+<pre><code>1. npm install -g hexo-cli
+2. hexo init &lt;folder&gt;
+3. cd &lt;folder&gt;
+4. npm install
+</code></pre><blockquote>
+<p>这里使用默认主题，其他主题，有些复杂的主题需要做一些额外的安装</p>
+</blockquote>
+<h4 id="配置travis"><a href="#配置travis" class="headerlink" title="配置travis"></a>配置travis</h4><blockquote>
+<p>这里默认你已经申请好<a href="https://travis-ci.com/" target="_blank" rel="noopener">travis-ci</a></p>
+</blockquote>
+<ol>
+<li>创建 .travis.yml 文件在你博客目录的根目录下</li>
+</ol>
+<p>按照以下代码进行对应修改</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">language:</span> <span class="string">node_js</span></span><br><span class="line"><span class="attr">node_js:</span> <span class="string">stable</span></span><br><span class="line"></span><br><span class="line"><span class="attr">before_install:</span> <span class="comment"># 这里是之前让你申请的git仓库地址</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">clone</span> <span class="attr">https://xxx.git</span> <span class="bullet">-b</span> <span class="string">Dev</span></span><br><span class="line"><span class="attr">install:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-cli</span> <span class="bullet">-g</span></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">hexo</span> <span class="string">clean</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="attr">after_success:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">cp</span> <span class="string">README.md</span> <span class="string">public</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">cd</span> <span class="string">./public</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">init</span></span><br><span class="line">  <span class="comment"># git 提交的署名</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">config</span> <span class="bullet">--global</span> <span class="string">user.name</span> <span class="string">"xxx"</span></span><br><span class="line">  <span class="comment"># git 提交的邮箱</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">config</span> <span class="bullet">--global</span> <span class="string">user.email</span> <span class="string">"xxx@xxx.com"</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">add</span> <span class="bullet">-A</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">commit</span> <span class="bullet">-m</span> <span class="string">"Travis CI Auto Builder"</span></span><br><span class="line">  <span class="comment"># Token 为之前上边让你申请的 token，注意这里并不是明文，是你设置的常量名字</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">push</span> <span class="bullet">--force</span> <span class="bullet">-u</span> <span class="attr">https://$&#123;Token&#125;@xxx.git</span> <span class="attr">master:master</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>关于设置 Token</p>
+<ol>
+<li><p>打开 <a href="https://travis-ci.com/" target="_blank" rel="noopener">travis-ci</a> 找到你对应关联项目的设置界面，类似这个地址的页面：<a href="https://travis-ci.com/goldhan/goldhan.github.io/settings" target="_blank" rel="noopener">https://travis-ci.com/goldhan/goldhan.github.io/settings</a></p>
+</li>
+<li><p>设置 Environment Variables<br>name可以填Token，或者其他常量名，但是注意要和上边 .travis.yml 里的一致，value 填上边申请的 token即可</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="上传git"><a href="#上传git" class="headerlink" title="上传git"></a>上传git</h3><p>此时，还没有上传到git服务商</p>
+<ol>
+<li>git clone <a href="https://xxx.git" target="_blank" rel="noopener">https://xxx.git</a> 上边申请的仓库</li>
+<li>把你的整个博客目录里的 <strong>内容</strong> 移动到此目录下</li>
+<li>git add -A</li>
+<li>git commit -m “你的提交日志”</li>
+<li>git push origin master:dev</li>
+</ol>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>此时顺利的话，travis-ci 应该已经自动编译。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li>git仓库是带有 GitHub Pages 服务的，具体请搜索</li>
+<li>travis-ci 基础使用，请看官网的文档</li>
+<li>案例：<a href="https://github.com/goldhan/goldhan.github.io" target="_blank" rel="noopener">goldhan.github.io</a></li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='https://github.com/goldhan/GDResource/raw/master/Music/%E5%AD%9D%E6%B7%91%20-%20%E6%BE%A4%E9%87%8E%E5%BC%98%E4%B9%8B%20-%20Call%C2%A0of%C2%A0Silence%C2%A0(%E5%AD%9D%E6%B7%91%C2%A0Bootleg).mp3'></li>
+                    
+                        <li title='1' data-url='https://github.com/goldhan/GDResource/raw/master/Music/Gareth%20Coker%20-%20Main%20Theme%20-%20Definitive%20Edition.mp3'></li>
+                    
+                        <li title='2' data-url='https://github.com/goldhan/GDResource/raw/master/Music/Gareth%20Coker%2CAeralie%20Brighton%20-%20Ori%2C%20Lost%20In%20the%20Storm.mp3'></li>
+                    
+                        <li title='3' data-url='https://github.com/goldhan/GDResource/raw/master/Music/Ivan%20Torrent%20-%20Before%20I%20Leave%20This%20World.mp3'></li>
+                    
+                        <li title='4' data-url='https://github.com/goldhan/GDResource/raw/master/Music/Kyle%C2%A0Xian%20-%20%E4%B8%80%E5%8F%A3%E6%B0%94%E5%90%AC%E5%AE%8C12%E9%A6%96%E3%80%8A%E8%BE%B6%E4%BA%95%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E3%80%8B%E7%A5%9E%E6%9B%B2%EF%BC%88%E7%B4%85%E8%93%AEX%E5%BF%83%E8%84%8FX%E7%AC%BC%E4%B8%AD%E9%B8%9FX%E5%8F%98%E8%BA%AB%E7%A5%9E%E6%9B%B2xReluctant%20X%20eye%EF%BC%89%EF%BC%88Cover%20Linked%20Horizon%EF%BC%89.mp3'></li>
+                    
+                        <li title='5' data-url='https://github.com/goldhan/GDResource/raw/master/Music/Rous%20-%20L.I.F.E.mp3'></li>
+                    
+                        <li title='6' data-url='https://github.com/goldhan/GDResource/raw/master/Music/%E4%B8%AD%E6%9D%91%E7%94%B1%E5%88%A9%E5%AD%90%20-%20%E7%81%AB%E5%AE%B5%E3%81%AE%E6%9C%88%E3%83%BB%E3%83%86%E3%83%BC%E3%83%9E~%E3%83%94%E3%82%A2%E3%83%8E%E3%82%BD%E3%83%AD.mp3'></li>
+                    
+                        <li title='7' data-url='https://github.com/goldhan/GDResource/raw/master/Music/%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%20-%20Elementalist%20Lux.mp3'></li>
+                    
+                        <li title='8' data-url='https://github.com/goldhan/GDResource/raw/master/Music/%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%20-%20Freljord.mp3'></li>
+                    
+                        <li title='9' data-url='https://github.com/goldhan/GDResource/raw/master/Music/%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%20-%20Jhin%2C%20the%20Virtuoso.mp3'></li>
+                    
+                        <li title='10' data-url='https://github.com/goldhan/GDResource/raw/master/Music/%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%20-%20Taliyah%2Cthe%20Stoneweaver.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='true'
+        data-ci='322c43929b0a911a80d0'
+        data-cs='7377427a8bdd9d114f65e1e4ddbdcd2c8e5b2192'
+        data-r='goldhan.github.io'
+        data-o='goldhan'
+        data-a='goldhan'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

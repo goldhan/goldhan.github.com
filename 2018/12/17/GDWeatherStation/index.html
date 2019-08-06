@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GoldKing_Blog</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="iOS,Gold,"> 
+    <meta name="description" content="GoldKing&#39;s Blog,简单纯粹的翻页时钟，充分利用你的旧手机和旧 iPad
+最新V1.1删除广告，放开所有内容限制
+简单只是为了充分利用旧手机，简单的显示时间
+富有设计感简约，优美的设计，给你不一样的体验，内置多个主题可,"> 
+    <meta name="author" content="GoldKing"> 
+    <link rel="alternative" href="atom.xml" title="GoldKing_Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">教你用ESP8266做一个天气预报GDWeatherStation</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">教你用ESP8266做一个天气预报GDWeatherStation</h1>
+        <div class="stuff">
+            <span>十二月 17, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/12864/">12864</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Arduino/">Arduino</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/ESP8266/">ESP8266</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Weather/">Weather</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="教你用-ESP8266-做一个天气预报-GDWeatherStation"><a href="#教你用-ESP8266-做一个天气预报-GDWeatherStation" class="headerlink" title="教你用 ESP8266 做一个天气预报 GDWeatherStation"></a>教你用 ESP8266 做一个天气预报 GDWeatherStation</h1><h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2><ul>
+<li><p>说明</p>
+<blockquote>
+<p>简介以及说明</p>
+</blockquote>
+</li>
+<li><p>前期准备</p>
+<blockquote>
+<p>你需要准备什么？</p>
+</blockquote>
+</li>
+<li><p>接口说明</p>
+<blockquote>
+<p>你需要准备的接口说明，以及申请工作</p>
+</blockquote>
+</li>
+<li><p>Python端</p>
+<blockquote>
+<p>Python端服务脚本说明</p>
+</blockquote>
+</li>
+<li><p>Arduino端</p>
+<blockquote>
+<p>Arduino端说明</p>
+</blockquote>
+</li>
+<li><p>UI说明</p>
+<blockquote>
+<p>关于UI设计</p>
+</blockquote>
+</li>
+<li><p>后续</p>
+<blockquote>
+<p>进一步改进</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><h3 id="最终效果说明"><a href="#最终效果说明" class="headerlink" title="最终效果说明"></a>最终效果说明</h3><blockquote>
+<p>通过ESP8266连接WIFI访问网络获取天气，网络时间，自定义的信息，然后进行显示</p>
+</blockquote>
+<h3 id="需要了解的技术栈"><a href="#需要了解的技术栈" class="headerlink" title="需要了解的技术栈"></a>需要了解的技术栈</h3><ul>
+<li>Arduino</li>
+<li>C</li>
+<li>Python</li>
+</ul>
+<h3 id="流程说明"><a href="#流程说明" class="headerlink" title="流程说明"></a>流程说明</h3><p>利用Python获取申请的api返回信息，进行整理，上传到中转的稳定的api接口，Arduino端再访问此中转的api接口，进行数据展示</p>
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><h3 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h3><ul>
+<li>ESP8266 模块<blockquote>
+<p>注意 ESP8266 模块有差别，但是基本都是一样的，需要注意引脚定义</p>
+</blockquote>
+</li>
+<li>12864 OLED 模块 i2c接口<blockquote>
+<p>当然也可以使用SPI接口，只是需要更改 Arduino程序代码即可</p>
+</blockquote>
+</li>
+<li>连接线若干</li>
+<li><strong>可选</strong> usb 下载器<blockquote>
+<p>有些 ESP8266 没有自带 usb下载功能，需要自己买个usb下载器，进行程序烧录</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><ul>
+<li>Arduino IDE<blockquote>
+<p>百度下，有下载</p>
+</blockquote>
+</li>
+<li>usb下载器驱动<blockquote>
+<p>根据自己型号去驱动，多数店家会有提供，百度也能找到</p>
+</blockquote>
+</li>
+<li>Python3 环境</li>
+</ul>
+<h3 id="所需要的第三发库"><a href="#所需要的第三发库" class="headerlink" title="所需要的第三发库"></a>所需要的第三发库</h3><h4 id="Arduino-IDE-需要的库"><a href="#Arduino-IDE-需要的库" class="headerlink" title="Arduino IDE 需要的库"></a>Arduino IDE 需要的库</h4><blockquote>
+<p>具体怎么去安装库，请自行百度，关键字：Arduino 添加库，<strong>Arduino 添加ESP8266支持</strong></p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;NTPClient.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ArduinoJson.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ESP8266WiFi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ESP8266HTTPClient.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;U8g2lib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;WiFiUdp.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><p>无</p>
+<h2 id="接口说明"><a href="#接口说明" class="headerlink" title="接口说明"></a>接口说明</h2><h3 id="你需要申请"><a href="#你需要申请" class="headerlink" title="你需要申请"></a>你需要申请</h3><h4 id="一个空的Git仓库"><a href="#一个空的Git仓库" class="headerlink" title="一个空的Git仓库"></a>一个空的Git仓库</h4><p>需要申请一个空Git仓库，随便那一家都可以，申请很简单，这里不做详细描述</p>
+<h4 id="和风天气API-Key"><a href="#和风天气API-Key" class="headerlink" title="和风天气API Key"></a>和风天气API Key</h4><blockquote>
+<p><a href="http://www.heweather.com/" target="_blank" rel="noopener">和风天气API申请地址</a></p>
+</blockquote>
+<p>申请很简单，这里不做详细描述，只需要申请免费的即可，一天有限制请求次数，不过已经足够，注意记住申请后的Key</p>
+<h2 id="Python端"><a href="#Python端" class="headerlink" title="Python端"></a>Python端</h2><h3 id="服务器端——Python实现"><a href="#服务器端——Python实现" class="headerlink" title="服务器端——Python实现"></a>服务器端——Python实现</h3><h4 id="为啥要写个这样的程序"><a href="#为啥要写个这样的程序" class="headerlink" title="为啥要写个这样的程序"></a>为啥要写个这样的程序</h4><ul>
+<li>首先单片机性能有限，并且来来回回烧录程序比较麻烦，目前网上的接口对于单片机来讲数据量还是比较大的，解析会耗费很大的硬件资源，且接口不稳定。所以想自己组装一个自己能够把控的接口。</li>
+<li>自己组装接口可以只要自己想要的信息，使数据量变的小巧，适合单片机的解析，并且可以保证接口的稳定</li>
+</ul>
+<h4 id="目前已经实现的功能"><a href="#目前已经实现的功能" class="headerlink" title="目前已经实现的功能"></a>目前已经实现的功能</h4><ul>
+<li>定时从网上的接口获取数据，解析成自己组装的接口并且上传到指定的git仓库上</li>
+<li>定时上传和天气数据</li>
+<li><del>定时上传糗事百科段子</del> （已删除此功能）</li>
+<li>定时push自己的自定义信息</li>
+</ul>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ul>
+<li>程序有一个json文件，当第一次使用时需要配置自己的申请的一些接口，和key</li>
+<li>userData.json 文件存放着所用的接口及key</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "city": "shenzhen",  // 城市拼音</span><br><span class="line">  "heWeatherKey": "xxxxxx", // 和风天气Key</span><br><span class="line">  "qiuShiAPI": "http://m2.qiushibaike.com/article/list/text?count=5&amp;page=1",</span><br><span class="line">  "gitUrl": "https://xxxxxxx.git", // 所申请的 Git 仓库地址</span><br><span class="line">  "title": "about me", // 推送标题</span><br><span class="line">  "detail": "qq:xxxxxx    have a good Day! This is my first push!" // 推送内容</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>git clone https://github.com/goldhan/GDWeatherStation.git</code></li>
+<li>修改 service 目录下的 userData.json 文件</li>
+<li>终端 cd 到 Service 目录下</li>
+<li><code>python3 Main.py</code> 即可</li>
+</ol>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><blockquote>
+<p>已经删除关于糗事百科的功能，所以没有了中文的烦恼，不过自定义的推送内容依然不支持中文</p>
+</blockquote>
+<ul>
+<li><del>目前糗事百科接口都是中文，但是ESP8266 上的程序不支持中文（不知道有没有英语版的类似糗事百科的接口</del></li>
+<li><del>还是中文中文中文！</del></li>
+</ul>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ul>
+<li>当请求有问题时程序会停止，请注意。</li>
+<li>请严格的按照json文件里的格式进行填写，不要乱加多余的空格或者其他不必要的字符。</li>
+<li>注意定义推送消息不要多，因为屏幕显示区域有限</li>
+<li>因为对应的ESP8266 端的程序不支持中文，所以请用英语写推送消息。</li>
+</ul>
+<h2 id="Arduino端"><a href="#Arduino端" class="headerlink" title="Arduino端"></a>Arduino端</h2><blockquote>
+<p><strong>ESP8266</strong> 源码，使用 Arduino 烧录到 ESP8266</p>
+</blockquote>
+<h3 id="Arduino-使用说明"><a href="#Arduino-使用说明" class="headerlink" title="Arduino 使用说明"></a>Arduino 使用说明</h3><blockquote>
+<p><strong>注意所需要的库，上边有说明</strong></p>
+</blockquote>
+<h4 id="GDWeatherStation-ino"><a href="#GDWeatherStation-ino" class="headerlink" title="GDWeatherStation.ino"></a>GDWeatherStation.ino</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"GDDraw.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ssid[] = <span class="string">"xxx"</span>; <span class="comment">// wifi ssid</span></span><br><span class="line">    <span class="keyword">char</span> password[] = <span class="string">"xxx"</span>; <span class="comment">// wifi password</span></span><br><span class="line">    <span class="keyword">char</span> url[] = <span class="string">"https://raw.githubusercontent.com/goldhan/MockJSON/master/GDWeather.json"</span>; <span class="comment">// git url</span></span><br><span class="line">    <span class="comment">// SHA1 fingerprint of the certificate  </span></span><br><span class="line">    <span class="comment">//把你需要调用的请求地址用浏览器访问，然后打开调试工具选择“安全”即可看到对应请求的fingerprint，复制到这个地方即可</span></span><br><span class="line">    <span class="keyword">char</span> fingerprint[] = <span class="string">"CC AA 48 48 66 46 0E 91 53 2C 9C 7C 23 2A B1 74 4D 29 9D 33"</span>; </span><br><span class="line">    Serial.begin(<span class="number">115200</span>);</span><br><span class="line">    u8g2Begin();</span><br><span class="line">    GDWifiBegin(ssid, password, fingerprint, url);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// theFirst();</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// SHA1 fingerprint of the certificate  </span></span><br><span class="line">    <span class="comment">//把你需要调用的请求地址用浏览器访问，然后打开调试工具选择“安全”即可看到对应请求的fingerprint，复制到这个地方即可</span></span><br><span class="line">    <span class="keyword">char</span> fingerprint[] = <span class="string">"CC AA 48 48 66 46 0E 91 53 2C 9C 7C 23 2A B1 74 4D 29 9D 33"</span>;</span><br><span class="line">    <span class="keyword">char</span> url[] = <span class="string">"https://raw.githubusercontent.com/goldhan/MockJSON/master/GDWeather.json"</span>; <span class="comment">// git url</span></span><br><span class="line">    GDStart(fingerprint, url);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>请按照注释去填写对应的值</strong></p>
+</blockquote>
+<h4 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h4><ul>
+<li>接线</li>
+</ul>
+<p><code>U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, /* clock=*/D6, /* data=*/D5, /* reset=*/U8X8_PIN_NONE);</code><br>代码已经很明确了，请对应接线即可，也可以按照自己的喜好去换引脚端口，OLED屏幕支持 i2c, SPI,本代码用的是 i2c协议，可以按照自己的需求去更改下代码即可，具体不懂可以百度，关键字：U8G2 spi，<br>类似：<code>U8G2_SSD1306_128X64_NONAME_1_4W_SW_SPI u8g2(U8G2_R0,/* clock=*/4, /* data=*/ 5, /* cs=*/ 3, /* dc=*/ 6, /* reset=*/ 7);</code></p>
+<ul>
+<li>url 地址</li>
+</ul>
+<p>url 地址是git里面可以直接访问json的地址，一般都是以 <code>https://raw</code> 为开头的地址</p>
+<ul>
+<li>fingerprint</li>
+</ul>
+<p>由于是https请求，所以请用浏览器访问上边的地址，打开调试工具选择“安全”即可看到对应请求的fingerprint，<strong>SHA1</strong></p>
+<h2 id="UI说明"><a href="#UI说明" class="headerlink" title="UI说明"></a>UI说明</h2><blockquote>
+<p>关于设计方面的说明</p>
+</blockquote>
+<h3 id="UI-展示"><a href="#UI-展示" class="headerlink" title="UI 展示"></a>UI 展示</h3><p><img src="/img/GDWeatherStation/UI_1.png" alt="01"><br><img src="/img/GDWeatherStation/UI_2.png" alt="02"><br><img src="/img/GDWeatherStation/UI_3.png" alt="03"></p>
+<p>具体源文件 <a href="https://github.com/goldhan/GDWeatherStation/tree/master/UI_Design" target="_blank" rel="noopener">Sketch</a></p>
+<h3 id="12864-OLED"><a href="#12864-OLED" class="headerlink" title="12864 OLED"></a>12864 OLED</h3><p>由于此模块网上有很多成熟的代码，所有选择12864显示模块，只需要显示简单的信息，已经足够。OLED的特性，所以显示效果还不错。</p>
+<h3 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h3><h4 id="简单，美观"><a href="#简单，美观" class="headerlink" title="简单，美观"></a>简单，美观</h4><p>显示模块所提供的可显示的区域其实不多，再加上单片机性能有限，所以尽量简单明了，只需要显示所需要的信息即可，但是本人大学艺术专业，所以还是要求自己在足够简单的同时，尽量美观！所以只运行了简单的圆角框即可，外加一点元素点缀即可。</p>
+<h4 id="卡片"><a href="#卡片" class="headerlink" title="卡片"></a>卡片</h4><p>由于显示的信息一个屏幕肯定不足够，所有设计成上下轮播的卡片展示。已足够显示，网络时间、今日天气、以及明日天气和少许的自定义信息。</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><blockquote>
+<p>关于后续计划</p>
+</blockquote>
+<h3 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h3><p>由于本人不会 C++ 所以一些 C++代码写的比较乱，甚至只能说是 C代码，Python 也是只会一点皮毛，所以写的也不好，不过还是可以用</p>
+<h3 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h3><ol>
+<li>自己设计3D外壳（哈哈，还好我之前就是做三维的，3ds Max,VRay,对于我来讲都很熟练），然后利用3D打印出来</li>
+<li>优化Wifi接入，利用 Airkiss</li>
+</ol>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>反正都是瞎折腾</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='https://github.com/goldhan/GDResource/raw/master/Music/%E5%AD%9D%E6%B7%91%20-%20%E6%BE%A4%E9%87%8E%E5%BC%98%E4%B9%8B%20-%20Call%C2%A0of%C2%A0Silence%C2%A0(%E5%AD%9D%E6%B7%91%C2%A0Bootleg).mp3'></li>
+                    
+                        <li title='1' data-url='https://github.com/goldhan/GDResource/raw/master/Music/Gareth%20Coker%20-%20Main%20Theme%20-%20Definitive%20Edition.mp3'></li>
+                    
+                        <li title='2' data-url='https://github.com/goldhan/GDResource/raw/master/Music/Gareth%20Coker%2CAeralie%20Brighton%20-%20Ori%2C%20Lost%20In%20the%20Storm.mp3'></li>
+                    
+                        <li title='3' data-url='https://github.com/goldhan/GDResource/raw/master/Music/Ivan%20Torrent%20-%20Before%20I%20Leave%20This%20World.mp3'></li>
+                    
+                        <li title='4' data-url='https://github.com/goldhan/GDResource/raw/master/Music/Kyle%C2%A0Xian%20-%20%E4%B8%80%E5%8F%A3%E6%B0%94%E5%90%AC%E5%AE%8C12%E9%A6%96%E3%80%8A%E8%BE%B6%E4%BA%95%E5%87%BB%E7%9A%84%E5%B7%A8%E4%BA%BA%E3%80%8B%E7%A5%9E%E6%9B%B2%EF%BC%88%E7%B4%85%E8%93%AEX%E5%BF%83%E8%84%8FX%E7%AC%BC%E4%B8%AD%E9%B8%9FX%E5%8F%98%E8%BA%AB%E7%A5%9E%E6%9B%B2xReluctant%20X%20eye%EF%BC%89%EF%BC%88Cover%20Linked%20Horizon%EF%BC%89.mp3'></li>
+                    
+                        <li title='5' data-url='https://github.com/goldhan/GDResource/raw/master/Music/Rous%20-%20L.I.F.E.mp3'></li>
+                    
+                        <li title='6' data-url='https://github.com/goldhan/GDResource/raw/master/Music/%E4%B8%AD%E6%9D%91%E7%94%B1%E5%88%A9%E5%AD%90%20-%20%E7%81%AB%E5%AE%B5%E3%81%AE%E6%9C%88%E3%83%BB%E3%83%86%E3%83%BC%E3%83%9E~%E3%83%94%E3%82%A2%E3%83%8E%E3%82%BD%E3%83%AD.mp3'></li>
+                    
+                        <li title='7' data-url='https://github.com/goldhan/GDResource/raw/master/Music/%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%20-%20Elementalist%20Lux.mp3'></li>
+                    
+                        <li title='8' data-url='https://github.com/goldhan/GDResource/raw/master/Music/%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%20-%20Freljord.mp3'></li>
+                    
+                        <li title='9' data-url='https://github.com/goldhan/GDResource/raw/master/Music/%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%20-%20Jhin%2C%20the%20Virtuoso.mp3'></li>
+                    
+                        <li title='10' data-url='https://github.com/goldhan/GDResource/raw/master/Music/%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%20-%20Taliyah%2Cthe%20Stoneweaver.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='true'
+        data-ci='322c43929b0a911a80d0'
+        data-cs='7377427a8bdd9d114f65e1e4ddbdcd2c8e5b2192'
+        data-r='goldhan.github.io'
+        data-o='goldhan'
+        data-a='goldhan'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
