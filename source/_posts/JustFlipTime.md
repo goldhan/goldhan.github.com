@@ -12,6 +12,12 @@ cover: /img/JustFlipTime/JustFlipTime.png
 ![01](/img/JustFlipTime/JustFlipTime.png)
 ![02](/img/JustFlipTime/JustFlipTime_IPad.png)
 
+## 最新
+
+### V1.1
+
+删除广告，放开所有内容限制
+
 ## 简单
 
 只是为了充分利用旧手机，简单的显示时间
@@ -29,4 +35,4 @@ cover: /img/JustFlipTime/JustFlipTime.png
 
 ## 关于
 
-官方 QQ 群：291995662，**进群免费送一个主题哦**
+官方 QQ 群：291995662
